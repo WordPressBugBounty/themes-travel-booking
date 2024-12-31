@@ -3,8 +3,8 @@
 Contributors: wptravelengine
 Requires at least: 6.2
 Requires PHP: 7.3
-Tested up to: 6.6
-Stable tag: 1.3.5
+Tested up to: 6.7
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, rtl-language-support, theme-options, threaded-comments, translation-ready, blog, photography, portfolio
@@ -89,6 +89,9 @@ Some codes are taken from Twenty Twenty theme - https://wordpress.org/themes/twe
 
 == Changelog ==
 
+    1.3.6 - December 31, 2024
+    * Update: Made compatible with latest WP Travel Engine plugin.
+    
     1.3.5 - August 14, 2024
     * Update: New dashboard has been implemented for better user experience.
 
