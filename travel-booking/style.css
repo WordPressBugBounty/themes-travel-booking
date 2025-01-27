@@ -5,7 +5,7 @@ Theme URI: https://wptravelengine.com/downloads/travel-booking-free-wordpress-th
 Author: WP Travel Engine
 Author URI: https://wptravelengine.com/
 Description: Travel Booking is a free WordPress theme to create travel online booking website for tour and travel operators and companies. You can add trips, destinations, and trip types, feature travel activities, highlight your specialties and allow visitors to book the trips. The stunning design combined with modern CSS effects and animation will make your visitors feel like they are already on a trip. Travel Booking WordPress theme is speed optimized, translation ready, SEO-friendly and mobile-friendly. Apart from travel booking companies, you can also use Travel Booking theme for travel blogging, hotel, spa, bed and breakfast, luxury resort, reservation, tour operator, tourism, transports and car booking. Get support at https://wptravelengine.com/support-ticket/.
-Version: 1.3.7
+Version: 1.3.8
 Requires PHP: 7.3
 Tested up to: 6.7
 Requires at least: 6.2
@@ -353,7 +353,7 @@ big {
   clear: both;
 }
 
-.row {
+body:not(.single-trip) .row {
   margin: 0 -15px;
 }
 
@@ -754,7 +754,7 @@ big {
 }
 
 .page-content,
-.entry-content,
+body:not(.single-trip).entry-content,
 .entry-summary {
   margin: 1.5em 0 0;
 }
@@ -4610,7 +4610,8 @@ WIDGET ICON TEXT
   border-color: var(--primary-color);
 }
 
-.deals-section .btn-holder, section.popular-destination .btn-holder {
+.deals-section .btn-holder,
+section.popular-destination .btn-holder {
   text-align: center;
   margin-top: 60px;
 }
@@ -5544,8 +5545,8 @@ section.popular-destination .btn-holder .primary-btn:focus {
   border-radius: 100px;
 }
 
-#primary .post .entry-content ul,
-#primary .page .entry-content ul {
+#primary .post .entry-content ul:not(.splide__pagination),
+#primary .page .entry-content ul:not(.splide__pagination) {
   margin: 0 0 1.5em;
   padding: 0;
   list-style: none;
@@ -6106,7 +6107,6 @@ section.popular-destination .btn-holder .primary-btn:focus {
   line-height: 1.421em;
   font-weight: 700;
   color: #000;
-  margin: 0 0 35px;
 }
 
 .wpte-trip-feat-img-gallery .owl-next,
@@ -6310,7 +6310,6 @@ section.popular-destination .btn-holder .primary-btn:focus {
   border-radius: 3px 3px 0 0;
   color: #333;
   padding: 10px 20px;
-  background: #e6e7ee;
 }
 
 .single-trip #tabs-container .tab-inner-wrapper .tab-anchor-wrapper.nav-tab-active a {
@@ -6446,29 +6445,6 @@ section.popular-destination .btn-holder .primary-btn:focus {
   font-weight: 700;
   color: #000;
   position: relative;
-}
-
-.single-trip #tabs-container .tab-content .faq .faq-row .accordion-tabs-toggle:after {
-  position: absolute;
-  top: 0;
-  right: 0;
-  content: "";
-  background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23c7c7c7' viewBox='0 0 256 512'%3E%3Cpath d='M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z'/%3E%3C/svg%3E") center center no-repeat;
-  width: 20px;
-  height: 25px;
-  -webkit-transition: ease 0.2s;
-  -moz-transition: ease 0.2s;
-  transition: ease 0.2s;
-}
-
-.single-trip #tabs-container .tab-content .faq .faq-row .accordion-tabs-toggle.active:after {
-  -webkit-transform: rotate(180deg);
-  -moz-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-
-.single-trip #tabs-container .tab-content .faq .faq-row .accordion-tabs-toggle .rotator {
-  display: none;
 }
 
 .single-trip #tabs-container .tab-content .faq .faq-row .faq-content {
@@ -7484,305 +7460,6 @@ travel booking toolkit cta widget
   border-bottom: 1px solid #F2F2F2;
 }
 
-/*===================================
- Advance Search Result items
- ==================================*/
-/*.trip-search-result #primary{
-    width: 100%;
-    float: none;
-}
-.trip-search-result .wp-travel-engine-archive-outer-wrap .advanced-search-wrapper{
-    width: 330px;
-}
-.trip-search-result .wp-travel-engine-archive-outer-wrap .advanced-search-wrapper + .wp-travel-engine-archive-repeater-wrap{
-    width: -webkit-calc(100% - 330px);
-    width: -moz-calc(100% - 330px);
-    width: calc(100% - 330px);
-}
-.trip-search-result .advanced-search-wrapper .advanced-search-field.search-trip-type h3:after,
-.trip-search-result .advanced-search-wrapper .advanced-search-field.trip-dates h3:after{
-    right: 3px;
-}
-.trip-search-result #primary .advanced-search-wrapper .sidebar{
-    background: #fafafa;
-    border-radius: 5px;
-    padding: 20px;
-}
-.trip-search-result #primary .wp-travel-engine-archive-wrap .title {
-    font-size: 18px;
-    font-weight: 500;
-    padding: 0 20px;
-    margin: 0 0 7px;
-}
-.trip-search-result #primary .wp-travel-engine-archive-wrap .title a{
-    color: #111;
-    transition: all ease 0.3s;
-}
-.trip-search-result #primary .wp-travel-engine-archive-wrap .title a:hover{
-    color: #32b67a;
-    text-decoration: none;
-}
-.trip-search-result #primary .category-grid {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-left: -15px;
-    margin-right: -15px;
-}
-
-.trip-search-result #primary .category-grid .col {
-    width: 33.3333%;
-    padding: 0 15px;
-    margin: 0 0 30px;
-}
-
-.trip-search-result #primary .category-grid .col .holder {
-    border: 1px solid #dcdcdc;
-    background: #fff;
-    border-radius: 5px;
-    transition: linear 0.2s;
-}
-
-.trip-search-result #primary .category-grid .col:hover .holder {
-    box-shadow: 0 20px 38px rgba(0, 0, 0, 0.15);
-}
-
-.trip-search-result #primary .category-grid .img-holder {
-    position: relative;
-}
-
-.trip-search-result #primary .category-grid .img-holder img {
-    vertical-align: top;
-    border-radius: 5px 5px 0 0;
-    width: 100%;
-}
-
-.trip-search-result #primary .category-grid .img-holder .price-holder {
-    background: #32b67a;
-    border-top-left-radius: 5px;
-    color: #fff;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 0;
-    left: -5px;
-    position: absolute;
-    bottom: -20px;
-}
-
-.trip-search-result #primary .category-grid .img-holder .price-holder:after {
-    background: #144e33;
-    border-bottom-left-radius: 4px;
-    bottom: -6px;
-    content: "";
-    height: 6px;
-    left: 0;
-    position: absolute;
-    width: 5px;
-}
-
-.trip-search-result #primary .category-grid .img-holder .price-holder span {
-    display: block;
-    padding: 8px 15px;
-    line-height: 1;
-    position: relative;
-}
-
-.trip-search-result #primary .category-grid .img-holder .price-holder span:before {
-    width: 0;
-    height: 0;
-    border-top: 20px solid #32b67a;
-    border-right: 20px solid transparent;
-    position: absolute;
-    top: 0;
-    right: -20px;
-    content: '';
-}
-
-.trip-search-result #primary .category-grid .img-holder .price-holder span:after {
-    width: 0;
-    height: 0;
-    border-bottom: 20px solid #32b67a;
-    border-right: 20px solid transparent;
-    position: absolute;
-    bottom: 0;
-    right: -20px;
-    content: '';
-}
-
-.trip-search-result #primary .category-grid .text-holder {
-    background: #fff;
-    padding: 20px 0 14px;
-    border-radius: 0 0 5px 5px;
-}
-
-.trip-search-result #primary .category-grid .text-holder .entry-title {
-    font-size: 18px;
-    font-weight: 500;
-    font-family: "Montserrat", sans-serif;
-    padding: 0 20px;
-    margin: 0 0 7px;
-}
-
-.trip-search-result #primary .category-grid .text-holder .entry-title a {
-    color: #111;
-    transition: linear 0.2s;
-}
-
-.trip-search-result #primary .category-grid .text-holder .entry-title a:hover,
-.trip-search-result #primary .category-grid .text-holder .entry-title a:focus {
-    text-decoration: none;
-    color: #32b67a;
-}
-
-.trip-search-result #primary .category-grid .text-holder .meta-info {
-    padding: 0 20px;
-    font-size: 14px;
-}
-
-.trip-search-result #primary .category-grid .text-holder .meta-info span {
-    display: block;
-    margin: 0 0 7px;
-}
-
-.trip-search-result #primary .category-grid .text-holder .meta-info svg {
-    font-size: 16px;
-    margin-right: 5px;
-    color: #32b67a;
-}
-
-.trip-search-result #primary .category-grid .text-holder .btn-holder {
-    padding-top: 15px;
-    border-top: 1px solid #e5e5e5;
-    text-align: center;
-}
-
-.trip-search-result #primary .category-grid .text-holder .wp-travel-engine-cart {
-    margin: 0 0 10px;
-}
-
-.trip-search-result #primary .category-grid .text-holder .btn-more,
-.trip-search-result #primary .category-grid .text-holder .wp-travel-engine-cart {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    display: inline-block;
-    border: 2px solid #32b67a;
-    border-radius: 20px;
-    text-transform: uppercase;
-    padding: 2px 30px;
-    font-family: 'Montserrat', sans-serif;
-    transition: linear 0.2s;
-}
-
-.trip-search-result #primary .category-grid .text-holder .btn-more:hover,
-.trip-search-result #primary .category-grid .text-holder .btn-more:focus,
-.trip-search-result #primary .category-grid .text-holder .wp-travel-engine-cart:hover,
-.trip-search-result #primary .category-grid .text-holder .wp-travel-engine-cart:focus {
-    text-decoration: none;
-    background: #32b67a;
-    color: #fff;
-}
-
-.trip-search-result #primary .sidebar {
-    margin-bottom: 50px;
-}
-
-.trip-search-result #primary .wte-advanced-search-wrap .load-more-search {
-    display: block;
-    font-size: 13px;
-    line-height: 2em;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #fff;
-    letter-spacing: 1px;
-    font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
-    background: #ffaf46;
-    border: 2px solid #ffaf46;
-    padding: 10px 40px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: ease 0.2s;
-    width: 220px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.trip-search-result #primary .wte-advanced-search-wrap .load-more-search:hover,
-.trip-search-result #primary .wte-advanced-search-wrap .load-more-search:focus {
-    text-decoration: none;
-    color: #ffaf46;
-    background: none;
-}
-.trip-search-result .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder .group-discount{
-    position: absolute;
-    font-size: 12px;
-    display: inline-block;
-    bottom: -14px;
-    top: inherit;
-    right: 20px;
-    background: #32b67a;
-    color: #fff;
-    border-radius: 40px;
-    padding: 0 15px;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    cursor: default;
-}
-.trip-search-result .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder .group-discount:before{
-    display: none;
-}
-.trip-search-result .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder .group-discount .tooltip{
-    position: absolute;
-    bottom: 100%;
-    width: 270px;
-    right: 0;
-    top: inherit;
-    left: inherit;
-    font-size: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 40px;
-    padding: 3px 15px;
-    text-align: center;
-    color: #fff;
-    opacity: 0;
-    visibility: hidden;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-    -webkit-transform: translate(0);
-    -moz-transform: translate(0);
-    transform: translate(0);
-    -webkit-transition: all ease 0.35s;
-    -moz-transition: all ease 0.35s;
-    transition: all ease 0.35s;
-}
-.trip-search-result .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder .group-discount:hover .tooltip,
-.trip-search-result .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder .group-discount:focus .tooltip{
-    bottom: calc(100% + 10px);
-    opacity: 1;
-    filter: alpha(opacity=100);
-    visibility: visible;
-}
-.trip-search-result .wp-travel-engine-archive-outer-wrap .wp-travel-engine-archive-wrap .img-holder .group-discount .tooltip:before{
-    content: "";
-    border-top: 7px solid rgba(0, 0, 0, 0.85);
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    position: absolute;
-    bottom: -7px;
-    right: 60px;
-}
-.trip-search-result #primary .wte-category-outer-wrap .load-more-search{
-    font-family: 'Montserrat', sans-serif;
-    background: #ffaf46;
-    border-color: #ffaf46;
-}
-.trip-search-result #primary .wte-category-outer-wrap .load-more-search:hover{
-    color: #ffaf46;
-    background: transparent;
-}
-.trip-search-result #primary .wte-category-outer-wrap .load-more-search:focus{
-    text-decoration: none;
-}*/
 @media only screen and (max-width: 1024px) {
   .site-header {
     padding: 0 0 10px;
@@ -10871,10 +10548,12 @@ body.leftsidebar .wpte-trip-list-wrapper.full-width {
 .wptravelengine_css_v2.trip-template-default #secondary .wpte-bf-outer {
   margin-bottom: 30px;
 }
-.wptravelengine_css_v2 .wpte-booking-area .wpte-bf-content ol, .wptravelengine_css_v2 .wpte-booking-area .wpte-bf-content ul {
+.wptravelengine_css_v2 .wpte-booking-area .wpte-bf-content ol,
+.wptravelengine_css_v2 .wpte-booking-area .wpte-bf-content ul {
   font-size: 1em !important;
 }
-.wptravelengine_css_v2 .wpte-booking-area .wpte-bf-content ol li:before, .wptravelengine_css_v2 .wpte-booking-area .wpte-bf-content ul li:before {
+.wptravelengine_css_v2 .wpte-booking-area .wpte-bf-content ol li:before,
+.wptravelengine_css_v2 .wpte-booking-area .wpte-bf-content ul li:before {
   top: 9px;
 }
 .wptravelengine_css_v2.post-type-archive-trip .trip-content-area .page-header .page-title {
@@ -10891,29 +10570,6 @@ body.leftsidebar .wpte-trip-list-wrapper.full-width {
   }
   .wptravelengine_css_v2 #tabs-container .tab-anchor-wrapper .wte-itinerary-head-wrap .accordion-tabs-toggle {
     display: inline;
-  }
-  .wptravelengine_css_v2.single-trip #tabs-container .faq .faq-row .accordion-tabs-toggle:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    content: "";
-    background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23c7c7c7' viewBox='0 0 512 512'%3E%3Cpath d='M119.5 326.9L3.5 209.1c-4.7-4.7-4.7-12.3 0-17l7.1-7.1c4.7-4.7 12.3-4.7 17 0L128 287.3l100.4-102.2c4.7-4.7 12.3-4.7 17 0l7.1 7.1c4.7 4.7 4.7 12.3 0 17L136.5 327c-4.7 4.6-12.3 4.6-17-.1z'/%3E%3C/svg%3E") center center no-repeat;
-    width: 25px;
-    height: 30px;
-    -webkit-transform-origin: center center;
-    -moz-transform-origin: center center;
-    -ms-transform-origin: center center;
-    -o-transform-origin: center center;
-    transform-origin: center center;
-    -webkit-transition: ease 0.2s;
-    -moz-transition: ease 0.2s;
-    transition: ease 0.2s;
-    transform: none;
-  }
-  .wptravelengine_css_v2.single-trip #tabs-container .faq .faq-row .accordion-tabs-toggle.active:after {
-    -webkit-transform: rotate(180deg);
-    -moz-transform: rotate(180deg);
-    transform: rotate(180deg);
   }
   .wptravelengine_css_v2.single-trip #tabs-container .review-wrap .comment-rating .trip-review-detail-gallery a,
   .wptravelengine_css_v2.single-trip #tabs-container #respond a {
@@ -10978,86 +10634,101 @@ body.leftsidebar .wpte-trip-list-wrapper.full-width {
   }
 }
 .category-main-wrap.category-grid,
-.wte-related-trips.category-grid, .wte-related-trips-wrapper.category-grid {
+.wte-related-trips.category-grid,
+.wte-related-trips-wrapper.category-grid {
   margin-left: -15px !important;
   margin-right: -15px !important;
 }
 .category-main-wrap.category-grid .category-trips-single,
-.wte-related-trips.category-grid .category-trips-single, .wte-related-trips-wrapper.category-grid .category-trips-single {
+.wte-related-trips.category-grid .category-trips-single,
+.wte-related-trips-wrapper.category-grid .category-trips-single {
   padding: 0 15px !important;
   margin-right: 0 !important;
 }
 @media (max-width: 767px) {
   .category-main-wrap.category-grid .category-trips-single,
-  .wte-related-trips.category-grid .category-trips-single, .wte-related-trips-wrapper.category-grid .category-trips-single {
+  .wte-related-trips.category-grid .category-trips-single,
+  .wte-related-trips-wrapper.category-grid .category-trips-single {
     flex: 0 0 100% !important;
     max-width: 100% !important;
   }
 }
 .category-main-wrap.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap,
-.wte-related-trips.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap, .wte-related-trips-wrapper.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap {
+.wte-related-trips.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap,
+.wte-related-trips-wrapper.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap {
   padding-right: 24px;
 }
 .category-main-wrap.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title,
-.wte-related-trips.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title, .wte-related-trips-wrapper.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title {
+.wte-related-trips.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title,
+.wte-related-trips-wrapper.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title {
   font-size: 22px !important;
   line-height: 1.3 !important;
   color: var(--primary-font-color);
 }
 .category-main-wrap.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-aval-time,
-.wte-related-trips.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-aval-time, .wte-related-trips-wrapper.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-aval-time {
+.wte-related-trips.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-aval-time,
+.wte-related-trips-wrapper.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-aval-time {
   padding: 20px;
 }
 .category-main-wrap.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-viewmre-btn,
-.wte-related-trips.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-viewmre-btn, .wte-related-trips-wrapper.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-viewmre-btn {
+.wte-related-trips.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-viewmre-btn,
+.wte-related-trips-wrapper.category-grid .category-trips-single .category-trips-single-inner-wrap .category-trip-viewmre-btn {
   margin: 0;
 }
 .category-main-wrap.category-grid.wte-col-1 .category-trips-single,
-.wte-related-trips.category-grid.wte-col-1 .category-trips-single, .wte-related-trips-wrapper.category-grid.wte-col-1 .category-trips-single {
+.wte-related-trips.category-grid.wte-col-1 .category-trips-single,
+.wte-related-trips-wrapper.category-grid.wte-col-1 .category-trips-single {
   flex: 0 0 100% !important;
   max-width: 100% !important;
 }
 @media (min-width: 768px) {
   .category-main-wrap.category-grid.wte-col-2 .category-trips-single,
-  .wte-related-trips.category-grid.wte-col-2 .category-trips-single, .wte-related-trips-wrapper.category-grid.wte-col-2 .category-trips-single {
+  .wte-related-trips.category-grid.wte-col-2 .category-trips-single,
+  .wte-related-trips-wrapper.category-grid.wte-col-2 .category-trips-single {
     flex: 0 0 50% !important;
     max-width: 50% !important;
   }
 }
 @media (min-width: 768px) {
   .category-main-wrap.category-grid.wte-col-3 .category-trips-single,
-  .wte-related-trips.category-grid.wte-col-3 .category-trips-single, .wte-related-trips-wrapper.category-grid.wte-col-3 .category-trips-single {
+  .wte-related-trips.category-grid.wte-col-3 .category-trips-single,
+  .wte-related-trips-wrapper.category-grid.wte-col-3 .category-trips-single {
     flex: 0 0 50% !important;
     max-width: 50% !important;
   }
 }
 @media (min-width: 1025px) {
   .category-main-wrap.category-grid.wte-col-3 .category-trips-single,
-  .wte-related-trips.category-grid.wte-col-3 .category-trips-single, .wte-related-trips-wrapper.category-grid.wte-col-3 .category-trips-single {
+  .wte-related-trips.category-grid.wte-col-3 .category-trips-single,
+  .wte-related-trips-wrapper.category-grid.wte-col-3 .category-trips-single {
     flex: 0 0 33.333% !important;
     max-width: 33.333% !important;
   }
 }
 @media (min-width: 768px) {
   .category-main-wrap.category-grid.wte-col-4 .category-trips-single,
-  .wte-related-trips.category-grid.wte-col-4 .category-trips-single, .wte-related-trips-wrapper.category-grid.wte-col-4 .category-trips-single {
+  .wte-related-trips.category-grid.wte-col-4 .category-trips-single,
+  .wte-related-trips-wrapper.category-grid.wte-col-4 .category-trips-single {
     flex: 0 0 50% !important;
     max-width: 50% !important;
   }
 }
 @media (min-width: 1025px) {
   .category-main-wrap.category-grid.wte-col-4 .category-trips-single,
-  .wte-related-trips.category-grid.wte-col-4 .category-trips-single, .wte-related-trips-wrapper.category-grid.wte-col-4 .category-trips-single {
+  .wte-related-trips.category-grid.wte-col-4 .category-trips-single,
+  .wte-related-trips-wrapper.category-grid.wte-col-4 .category-trips-single {
     flex: 0 0 25% !important;
     max-width: 25% !important;
   }
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap {
   padding-right: 24px;
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-prc-title-wrap .category-trip-title {
   font-size: 22px !important;
   font-weight: 500 !important;
   line-height: 1.3 !important;
@@ -11066,44 +10737,53 @@ body.leftsidebar .wpte-trip-list-wrapper.full-width {
 }
 @media (max-width: 767px) {
   .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time,
-  .wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time {
+  .wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time,
+  .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time {
     padding-left: 24px;
     padding-right: 24px;
   }
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig {
   margin: 0 !important;
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .owl-nav button:focus,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .owl-nav button:focus, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .owl-nav button:focus {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .owl-nav button:focus,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .owl-nav button:focus {
   outline: none;
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-gallery-wrapper img,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-gallery-wrapper img, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-gallery-wrapper img {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-gallery-wrapper img,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-gallery-wrapper img {
   transform: none;
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-trip-feat-img-gallery,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-trip-feat-img-gallery, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-trip-feat-img-gallery {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-trip-feat-img-gallery,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-fig .wpte-trip-feat-img-gallery {
   width: calc(100% + 2px);
   margin-left: -1px;
   margin-right: -1px;
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-detail-wrap .category-trip-prc-wrap,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-detail-wrap .category-trip-prc-wrap, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-detail-wrap .category-trip-prc-wrap {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-detail-wrap .category-trip-prc-wrap,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-detail-wrap .category-trip-prc-wrap {
   flex-wrap: nowrap;
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap > i,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap > i, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap > i {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap > i,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap > i {
   flex: 1;
   max-width: 24px;
 }
 .category-main-wrap .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap .category-available-months,
-.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap .category-available-months, .wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap .category-available-months {
+.wte-related-trips .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap .category-available-months,
+.wte-related-trips-wrapper .category-trips-single.wpte_new-layout .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap .category-available-months {
   flex: 1;
 }
 .category-main-wrap .category-trips-single .category-trip-aval-time ul.next-departure-list li:not(:last-child),
-.wte-related-trips .category-trips-single .category-trip-aval-time ul.next-departure-list li:not(:last-child), .wte-related-trips-wrapper .category-trips-single .category-trip-aval-time ul.next-departure-list li:not(:last-child) {
+.wte-related-trips .category-trips-single .category-trip-aval-time ul.next-departure-list li:not(:last-child),
+.wte-related-trips-wrapper .category-trips-single .category-trip-aval-time ul.next-departure-list li:not(:last-child) {
   margin-bottom: 0 !important;
 }
 
@@ -11119,6 +10799,16 @@ body.leftsidebar .wpte-trip-list-wrapper.full-width {
   top: auto;
   bottom: 100%;
   transform: unset !important;
+}
+
+.single-trip #crumbs {
+  margin-bottom: 16px;
+}
+.single-trip #crumbs li {
+  margin-bottom: 0;
+}
+.single-trip .site-header {
+  margin-bottom: 16px;
 }
 
 #primary .page .entry-content .wpte-checkout__steps .wpte-checkout__steps-list {
@@ -11192,35 +10882,36 @@ body.leftsidebar .wpte-trip-list-wrapper.full-width {
   margin-right: 8px;
 }
 
-.trip-search-result #primary .page .entry-content ul {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap ul {
   margin: 0;
 }
-.trip-search-result #primary .page .entry-content ul li {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap ul li {
   padding-left: 0;
+  margin: 0;
 }
-.trip-search-result #primary .page .entry-content ul li::before, .trip-search-result #primary .page .entry-content ul li::after {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap ul li::before, #primary .page .entry-content .wp-travel-engine-archive-outer-wrap ul li::after {
   content: none;
 }
-.trip-search-result #primary .page .entry-content .advanced-search-wrapper .advanced-search-field ul li {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap .advanced-search-wrapper .advanced-search-field ul li {
   margin-bottom: 20px;
 }
-.trip-search-result #primary .page .entry-content .advanced-search-wrapper .advanced-search-field ul li ul {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap .advanced-search-wrapper .advanced-search-field ul li ul {
   margin: 20px 0px 20px 20px;
 }
-.trip-search-result #primary .page .entry-content .advanced-search-wrapper .advanced-search-field ul li:last-child {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap .advanced-search-wrapper .advanced-search-field ul li:last-child {
   margin-bottom: 0;
 }
-.trip-search-result #primary .page .entry-content .wp-travel-toolbar .wte-view-modes ul li {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap .wp-travel-toolbar .wte-view-modes ul li {
   margin: 0 5px;
 }
-.trip-search-result #primary .page .entry-content .wp-travel-toolbar .wte-ordering .wpte-trip__adv-field .wpte__select-options ul ul {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap .wp-travel-toolbar .wte-ordering .wpte-trip__adv-field .wpte__select-options ul ul {
   margin: -11px -8px;
 }
-.trip-search-result #primary .page .entry-content .wp-travel-toolbar .wte-ordering .wpte-trip__adv-field .wpte__select-options ul li {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap .wp-travel-toolbar .wte-ordering .wpte-trip__adv-field .wpte__select-options ul li {
   padding: 11px 8px;
   margin: 0;
 }
-.trip-search-result #primary .page .entry-content .category-trips-single .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap .category-available-months li {
+#primary .page .entry-content .wp-travel-engine-archive-outer-wrap .category-trips-single .category-trips-single-inner-wrap .category-trip-aval-time .category-trip-avl-tip-inner-wrap .category-available-months li {
   margin: 0 15px 0 0;
 }
 
