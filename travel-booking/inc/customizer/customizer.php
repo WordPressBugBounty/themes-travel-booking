@@ -44,7 +44,7 @@ function travel_booking_customizer_scripts() {
     $array = array(
         'ajax_url'   => admin_url( 'admin-ajax.php' ),
     	'flushit'    => __( 'Successfully Flushed!', 'travel-booking' ),
-    	'nonce'      => wp_create_nonce('ajax-nonce')
+    	'nonce'      => wp_create_nonce('travel_booking_flush_fonts_nonce')
     );
 
     wp_localize_script( 'travel-booking-customize', 'travel_booking_cdata', $array );

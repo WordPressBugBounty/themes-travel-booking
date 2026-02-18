@@ -682,19 +682,29 @@ if ( ! function_exists( 'travel_booking_load_preload_local_fonts' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'travel_booking_flush_local_google_fonts' ) ) {
-	/**
-	 * Ajax Callback for flushing the local font
-	 */
-	function travel_booking_flush_local_google_fonts() {
-		$WebFontLoader = new Travel_Booking_WebFont_Loader();
-		// deleting the fonts folder using ajax
-		$WebFontLoader->delete_fonts_folder();
-		die();
-	}
+if( ! function_exists( 'travel_booking_flush_local_google_fonts' ) ){
+    /**
+     * Ajax Callback for flushing the local font
+     */
+        function travel_booking_flush_local_google_fonts() {
+            // Verify nonce for CSRF protection
+            if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'travel_booking_flush_fonts_nonce' ) ) {
+                wp_send_json_error( 'Invalid nonce', 403 );
+            }
+
+            // Check user capability - only administrators should flush fonts
+            if ( ! current_user_can( 'manage_options' ) ) {
+                wp_send_json_error( 'Insufficient permissions', 403 );
+            }
+
+            $WebFontLoader = new Travel_Booking_WebFont_Loader();
+            //deleting the fonts folder using ajax
+            $WebFontLoader->delete_fonts_folder();
+            wp_send_json_success();
+        }
 }
+// Only allow authenticated users with proper permissions
 add_action( 'wp_ajax_flush_local_google_fonts', 'travel_booking_flush_local_google_fonts' );
-add_action( 'wp_ajax_nopriv_flush_local_google_fonts', 'travel_booking_flush_local_google_fonts' );
 
 
 if ( ! function_exists( 'travel_booking_content_grid_template' ) ) {

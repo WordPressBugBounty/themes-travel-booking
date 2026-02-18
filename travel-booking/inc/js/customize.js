@@ -92,8 +92,10 @@ function scrollToSection( section_id ){
         $.ajax ({
             url     : travel_booking_cdata.ajax_url,  
             type    : 'post',
-            data    : 'action=flush_local_google_fonts',    
-            nonce   : travel_booking_cdata.nonce,
+            data    : {
+                action: 'flush_local_google_fonts',
+                nonce: travel_booking_cdata.nonce
+            },    
             success : function(results){
                 //results can be appended in needed
                 $( '.flush-it' ).val(travel_booking_cdata.flushit);
