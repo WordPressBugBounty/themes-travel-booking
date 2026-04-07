@@ -2,9 +2,9 @@
 
 Contributors: wptravelengine
 Requires at least: 6.2
-Requires PHP: 7.3
+Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, left-sidebar, right-sidebar, custom-background, custom-header, custom-menu, custom-logo, featured-images, footer-widgets, full-width-template, rtl-language-support, theme-options, threaded-comments, translation-ready, blog, photography, portfolio
@@ -88,6 +88,9 @@ Some codes are taken from Twenty Twenty theme - https://wordpress.org/themes/twe
     All other images including icon image and images used in customizer settings are self created and are under the GPL.
 
 == Changelog ==
+
+    1.4.1 - April 06, 2026
+    * Fix: Updated PHP to 7.4
 
     1.4.0 - February 05, 2026
     * Fix: Broken Access Control Vulnerability has been fixed.

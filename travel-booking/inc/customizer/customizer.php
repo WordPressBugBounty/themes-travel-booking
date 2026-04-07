@@ -60,20 +60,31 @@ require get_template_directory() . '/inc/customizer-plugin-recommend/plugin-inst
 
 require get_template_directory() . '/inc/customizer-plugin-recommend/section-notice/class-section-notice.php';
 
-$config_customizer = array(
-    'recommended_plugins' => array( 
-       'travel-booking-toolkit' => array(
-            'recommended' => true,
-            'description' => sprintf( 
-                /* translators: %s: plugin name */
-                esc_html__( 'If you want to take full advantage of the features this theme has to offer, please install and activate %s plugin.', 'travel-booking' ), '<strong>Travel Booking Toolkit</strong>' ),
-        ),
-    ),
-    'recommended_plugins_title' => esc_html__( 'Recommended Plugin', 'travel-booking' ),
-    'install_button_label'      => esc_html__( 'Install and Activate', 'travel-booking' ),
-    'activate_button_label'     => esc_html__( 'Activate', 'travel-booking' ),
-    'deactivate_button_label'   => esc_html__( 'Deactivate', 'travel-booking' ),
-);
-Travel_Booking_Customizer_Notice::init( apply_filters( 'travel_booking_customizer_notice_array', $config_customizer ) );
+/**
+ * Initialize Shopexcel Customizer Notice
+ *
+ * @since 1.0.0
+ */
+if( ! function_exists( 'travel_booking_customizer_notice_init' ) ) {
+	function travel_booking_customizer_notice_init() {
+		$config_customizer = array(
+            'recommended_plugins' => array( 
+            'travel-booking-toolkit' => array(
+                    'recommended' => true,
+                    'description' => sprintf( 
+                        /* translators: %s: plugin name */
+                        esc_html__( 'If you want to take full advantage of the features this theme has to offer, please install and activate %s plugin.', 'travel-booking' ), '<strong>Travel Booking Toolkit</strong>' ),
+                ),
+            ),
+            'recommended_plugins_title' => esc_html__( 'Recommended Plugin', 'travel-booking' ),
+            'install_button_label'      => esc_html__( 'Install and Activate', 'travel-booking' ),
+            'activate_button_label'     => esc_html__( 'Activate', 'travel-booking' ),
+            'deactivate_button_label'   => esc_html__( 'Deactivate', 'travel-booking' ),
+        );
+        Travel_Booking_Customizer_Notice::init( apply_filters( 'travel_booking_customizer_notice_array', $config_customizer ) );
+    }
+}
+add_action( 'init', 'travel_booking_customizer_notice_init' );
+
 
 Travel_Booking_Customizer_Section::get_instance();

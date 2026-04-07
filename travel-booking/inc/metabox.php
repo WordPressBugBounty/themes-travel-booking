@@ -18,31 +18,43 @@ function travel_booking_add_sidebar_layout_box(){
 }
 add_action( 'add_meta_boxes', 'travel_booking_add_sidebar_layout_box' );
 
-$travel_booking_sidebar_layout = array(
-    'default-sidebar'   => array(
-         'value'     => 'default-sidebar',
-         'label'     => __( 'Default Sidebar', 'travel-booking' ),
-         'thumbnail' => get_template_directory_uri() . '/images/default-sidebar.png'
-    ),
-    'left-sidebar'   => array(
-         'value'     => 'left-sidebar',
-         'label'     => __( 'Left Sidebar', 'travel-booking' ),
-         'thumbnail' => get_template_directory_uri() . '/images/left-sidebar.png'
-    ),
-    'no-sidebar'     => array(
-         'value'     => 'no-sidebar',
-         'label'     => __( 'No Sidebar', 'travel-booking' ),
-         'thumbnail' => get_template_directory_uri() . '/images/no-sidebar.png'
-    ),
-    'right-sidebar' => array(
-         'value'     => 'right-sidebar',
-    	 'label'     => __( 'Right Sidebar (default)', 'travel-booking' ),
-    	 'thumbnail' => get_template_directory_uri() . '/images/right-sidebar.png'         
-    )
-);
+
+/**
+ * Get sidebar layout data
+ *
+ * @since 1.0.0
+ */
+if( ! function_exists( 'travel_booking_get_sidebar_layout_data' ) ){
+    function travel_booking_get_sidebar_layout_data(){
+        return array(
+                'default-sidebar'   => array(
+                'value'     => 'default-sidebar',
+                'label'     => __( 'Default Sidebar', 'travel-booking' ),
+                'thumbnail' => get_template_directory_uri() . '/images/default-sidebar.png'
+            ),
+            'left-sidebar'   => array(
+                'value'     => 'left-sidebar',
+                'label'     => __( 'Left Sidebar', 'travel-booking' ),
+                'thumbnail' => get_template_directory_uri() . '/images/left-sidebar.png'
+            ),
+            'no-sidebar'     => array(
+                'value'     => 'no-sidebar',
+                'label'     => __( 'No Sidebar', 'travel-booking' ),
+                'thumbnail' => get_template_directory_uri() . '/images/no-sidebar.png'
+            ),
+            'right-sidebar' => array(
+                'value'     => 'right-sidebar',
+                'label'     => __( 'Right Sidebar (default)', 'travel-booking' ),
+                'thumbnail' => get_template_directory_uri() . '/images/right-sidebar.png'         
+            )   
+        );
+    }
+}
+
 
 function travel_booking_sidebar_layout_callback(){
-    global $post , $travel_booking_sidebar_layout;
+    global $post;
+    $travel_booking_sidebar_layout = travel_booking_get_sidebar_layout_data();
     wp_nonce_field( basename( __FILE__ ), 'travel_booking_nonce' );
 ?>
  
@@ -80,7 +92,7 @@ function travel_booking_sidebar_layout_callback(){
 }
 
 function travel_booking_save_sidebar_layout( $post_id ){
-    global $travel_booking_sidebar_layout;
+    $travel_booking_sidebar_layout = travel_booking_get_sidebar_layout_data();
 
     // Verify the nonce before proceeding.
     if ( !isset( $_POST[ 'travel_booking_nonce' ] ) || !wp_verify_nonce( $_POST[ 'travel_booking_nonce' ], basename( __FILE__ ) ) )

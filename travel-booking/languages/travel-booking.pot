@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Travel Booking 1.4.0\n"
+"Project-Id-Version: Travel Booking 1.4.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/travel-booking\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-02-18T04:14:03+00:00\n"
+"POT-Creation-Date: 2026-04-06T11:20:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: travel-booking\n"
@@ -146,7 +146,7 @@ msgid "Install and activate"
 msgstr ""
 
 #: inc/customizer-plugin-recommend/plugin-install/class-plugin-install-helper.php:75
-#: inc/customizer/customizer.php:74
+#: inc/customizer/customizer.php:81
 #: inc/tgmpa/class-tgm-plugin-activation.php:2870
 #: build/dashboard.js:6789
 #: src/pages/UsefulPlugins/index.jsx:166
@@ -166,20 +166,20 @@ msgid "Successfully Flushed!"
 msgstr ""
 
 #. translators: %s: plugin name
-#: inc/customizer/customizer.php:69
+#: inc/customizer/customizer.php:76
 #, php-format
 msgid "If you want to take full advantage of the features this theme has to offer, please install and activate %s plugin."
 msgstr ""
 
-#: inc/customizer/customizer.php:72
+#: inc/customizer/customizer.php:79
 msgid "Recommended Plugin"
 msgstr ""
 
-#: inc/customizer/customizer.php:73
+#: inc/customizer/customizer.php:80
 msgid "Install and Activate"
 msgstr ""
 
-#: inc/customizer/customizer.php:75
+#: inc/customizer/customizer.php:82
 msgid "Deactivate"
 msgstr ""
 
@@ -599,24 +599,24 @@ msgstr ""
 msgid "Sidebar Layout"
 msgstr ""
 
-#: inc/metabox.php:24
+#: inc/metabox.php:32
 #: inc/widgets.php:19
 msgid "Default Sidebar"
 msgstr ""
 
-#: inc/metabox.php:29
+#: inc/metabox.php:37
 msgid "Left Sidebar"
 msgstr ""
 
-#: inc/metabox.php:34
+#: inc/metabox.php:42
 msgid "No Sidebar"
 msgstr ""
 
-#: inc/metabox.php:39
+#: inc/metabox.php:47
 msgid "Right Sidebar (default)"
 msgstr ""
 
-#: inc/metabox.php:51
+#: inc/metabox.php:63
 msgid "Choose Sidebar Template"
 msgstr ""
 
